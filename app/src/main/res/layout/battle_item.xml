@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_view_bg"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_main"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        >
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/oponentInfoRelativeLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                >
+
+                <TextView
+                    android:id="@+id/oponentProfileBoxTextView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/profile_box"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:text="F" />
+
+                <TextView
+                    android:id="@+id/oponentName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignBaseline="@id/oponentProfileBoxTextView"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@id/oponentProfileBoxTextView"
+                    android:textSize="12dp"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:text="Lucas do nascimento" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_toEndOf="@id/oponentInfoRelativeLayout"
+                android:src="@drawable/vsicon" />
+
+            <RelativeLayout
+                android:id="@+id/MyInfoRelativeLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/imageView1">
+
+                <TextView
+                    android:id="@+id/myName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignBaseline="@id/profileBoxTextView"
+                    android:layout_marginEnd="8dp"
+                    android:textSize="12dp"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:text="Lucas do nascimento" />
+
+                <TextView
+                    android:id="@+id/profileBoxTextView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_toEndOf="@id/myName"
+                    android:background="@drawable/profile_box"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:text="F" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/goalsImg"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/goalsimg" />
+            <LinearLayout
+                android:id="@+id/oponentsGoals"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/goalsImg">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:text="GOLS"
+                    android:textSize="12sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:text="32"
+                    android:textSize="24sp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/myGoals"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:text="GOLS"
+                    android:textSize="12sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    tools:text="32"
+                    android:textSize="24sp"
+                    />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/myGoalsImg"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="12dp"
+                android:layout_toEndOf="@id/myGoals"
+                android:src="@drawable/goalsimg" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
