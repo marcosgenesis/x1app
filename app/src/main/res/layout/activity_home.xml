@@ -70,7 +70,7 @@
                 android:id="@+id/historyIcon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/sword" />
+                app:srcCompat="@drawable/swordmain" />
 
             <TextView
                 android:id="@+id/textView8"

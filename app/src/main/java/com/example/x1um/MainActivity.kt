@@ -24,63 +24,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-
-        //val battleAdapter = BattleAdapter(ArrayList<Battle>(Battles.fakeBattles()))
-        //val rv:RecyclerView = findViewById(R.id.battlesRecycler);
+        setContentView(R.layout.activity_main)
         
         val battleAdapter = BattleAdapter(ArrayList<Battle>(Battles.fakeBattles()))
         val rv:RecyclerView = findViewById(R.id.battlesRecycler);
         rv.adapter = battleAdapter
-
-        onClickLoginButton()
-        onClickRegisterLink()
-    }
-
-    private fun onClickLoginButton (){
-        val editTextEmail : TextView = findViewById(R.id.input_email)
-        val editTextPassword : TextView = findViewById(R.id.input_password)
-
-        val emailInput = editTextEmail.getText()
-        val passwordInput = editTextPassword.getText()
-
-        println("Email: ")
-        println(emailInput)
-        println("Password: ")
-        println(passwordInput)
-
-        val buttonRegister: Button = findViewById(R.id.button_login)
-        buttonRegister.setOnClickListener{
-            loginUser(emailInput.toString(), passwordInput.toString())
-        }
-    }
-
-    private fun onClickRegisterLink (){
-        val buttonNavigationRegister: Button = findViewById(R.id.button_register)
-        buttonNavigationRegister.setOnClickListener{
-            val activityRegister = Intent(this, RegisterActivity::class.java)
-            startActivity(activityRegister)
-        }
-    }
-
-    private fun loginUser(email: String, password: String) {
-        println(email)
-        println(password)
-        auth = Firebase.auth
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    db.collection("users").whereEqualTo("email", user?.email).get().addOnSuccessListener { result ->
-                        val activityHome = Intent(this, HomeActivity::class.java)
-                        startActivity(activityHome)
-                    }.addOnFailureListener { error ->
-                        Log.w("User login error", "Error ao obter usuário", error)
-                    }
-                } else {
-                    Log.w("Login error", "Erro ao realizar login",)
-                }
-            }
-            
     }
 }

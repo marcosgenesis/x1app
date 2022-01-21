@@ -59,8 +59,8 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val user = auth.currentUser
                     db.collection("users").whereEqualTo("email", user?.email).get().addOnSuccessListener { result ->
-                        val activityHome = Intent(this, HomeActivity::class.java)
-                        startActivity(activityHome)
+                        val activityMain = Intent(this, MainActivity::class.java)
+                        startActivity(activityMain)
                     }.addOnFailureListener { error ->
                         Log.w("User login error", "Error ao obter usuário", error)
                     }
