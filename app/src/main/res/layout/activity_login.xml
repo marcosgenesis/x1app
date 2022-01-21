@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F5F5"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:background="#FFC107"
+            android:fontFamily="@font/roboto"
+            android:text="Login"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#090909"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:text=" Email"
+            android:textAlignment="textStart"
+            android:textColor="#070707"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/input_email"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:textColorHighlight="#FFC107"
+            android:textColorLink="#FFC107"
+            tools:text="email@example.com" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:text=" Senha"
+            android:textAlignment="textStart"
+            android:textColor="#0B0A0A"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:textColorHighlight="#FFC107"
+            android:textColorLink="#FFC107" />
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="318dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="40dp"
+            android:background="#FFC107"
+            android:shadowColor="#FFFCFC"
+            android:text="Entrar"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Ainda não possui conta ?"
+            android:textAlignment="center"
+            android:textColor="#FFC107"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="#0B0A0A"
+            android:text="Registre-se aqui"
+            android:textAllCaps="false"
+            android:textColor="#FFC107"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
