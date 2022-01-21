@@ -28,6 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         //val battleAdapter = BattleAdapter(ArrayList<Battle>(Battles.fakeBattles()))
         //val rv:RecyclerView = findViewById(R.id.battlesRecycler);
+        
+        val battleAdapter = BattleAdapter(ArrayList<Battle>(Battles.fakeBattles()))
+        val rv:RecyclerView = findViewById(R.id.battlesRecycler);
+        rv.adapter = battleAdapter
 
         onClickLoginButton()
         onClickRegisterLink()
@@ -77,5 +81,6 @@ class MainActivity : AppCompatActivity() {
                     Log.w("Login error", "Erro ao realizar login",)
                 }
             }
+            
     }
 }
