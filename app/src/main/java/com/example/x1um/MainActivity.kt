@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
 
         val battleAdapter = BattleAdapter(ArrayList<Battle>(Battles.fakeBattles()))
         val rv:RecyclerView = findViewById(R.id.battlesRecycler);
-        rv.adapter =
+        rv.adapter = battleAdapter
     }
 }
