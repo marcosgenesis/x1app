@@ -6,98 +6,111 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout4"
+    <ScrollView
+        android:id="@+id/Scroll"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@color/gray_700"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="16dp">
-
-        <LinearLayout
-            android:layout_width="210dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bem vindo novamente 👋🏻"
-                android:textAlignment="textStart"
-                android:textColor="@color/secondary_text" />
-
-            <TextView xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="marquee"
-                android:text="Marcos Gênesis"
-                android:textColor="@color/primary_text"
-                android:textSize="20dp"
-                android:textStyle="bold"
-
-                />
-        </LinearLayout>
-
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="30dp">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/profile_box"
-                android:src="@drawable/ic_baseline_person_24"
-
-                />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="100dp">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="375dp"
-            android:layout_height="67dp"
-            android:text="Visualizar duelos em andamento" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="Duelos ja encerrados"
-            android:textColor="@color/primary_text"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:typeface="normal" />
+            android:orientation="vertical"
+            android:gravity="center">
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@color/gray_700"
+                android:orientation="horizontal"
+                >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/battlesRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/battle_item" />
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="210dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bem vindo novamente 👋🏻"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/secondary_text" />
+
+                    <TextView xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:text="Marcos Gênesis"
+                        android:textColor="@color/primary_text"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="30dp">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/profile_box"
+                        android:src="@drawable/ic_baseline_person_24"
+
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="375dp"
+                android:layout_height="67dp"
+                android:layout_marginTop="-35dp"
+                android:text="Visualizar duelos em andamento" />
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center">
+
+
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Duelos ja encerrados"
+                    android:textColor="@color/primary_text"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:typeface="normal" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/battlesRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/battle_item" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="413dp"
         android:layout_height="67dp"
+        android:background="@color/gray_700"
         android:gravity="fill_vertical|end"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -112,6 +125,7 @@
                 android:id="@+id/homeIcon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 app:srcCompat="@drawable/ic_baseline_house_24" />
 
             <TextView
@@ -132,7 +146,7 @@
             <ImageView
                 android:id="@+id/battleIcon"
                 android:layout_width="match_parent"
-                android:layout_height="66dp"
+                android:layout_height="50dp"
                 app:srcCompat="@drawable/logo" />
 
         </LinearLayout>
@@ -160,5 +174,6 @@
         </LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
