@@ -9,151 +9,194 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFCFC"
         android:gravity="center"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="405dp"
-            android:layout_height="wrap_content"
-            android:background="#000000"
-            android:ems="10"
-            android:fontFamily="sans-serif-medium"
-            android:inputType="textPersonName"
-            android:text="Registro"
-            android:textAlignment="center"
-            android:textColor="#FFC107"
-            android:textSize="48sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="178dp" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="307dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="7dp"
-            android:text="Nome"
-            android:textAlignment="textStart"
-            android:textColor="#040303"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/input_name"
-            android:layout_width="276dp"
-            android:layout_height="61dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="293dp" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="306dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="7dp"
-            android:text="Username"
-            android:textAlignment="textStart"
-            android:textColor="#040303"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/input_username"
-            android:layout_width="275dp"
-            android:layout_height="59dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="86dp"
-            tools:layout_editor_absoluteY="384dp" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="308dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="7dp"
-            android:text="Email"
-            android:textAlignment="textStart"
-            android:textColor="#040303"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/input_email"
-            android:layout_width="276dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="307dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="7dp"
-            android:text="Senha"
-            android:textAlignment="textStart"
-            android:textColor="#040303"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/input_password"
-            android:layout_width="280dp"
-            android:layout_height="59dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="86dp"
-            tools:layout_editor_absoluteY="384dp" />
-
-        <Button
-            android:id="@+id/register_button"
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
-            android:background="#FFC107"
-            android:text="Cadastrar"
-            android:textColor="#FFC107"
-            tools:layout_editor_absoluteX="127dp"
-            tools:layout_editor_absoluteY="509dp" />
-
-        <TextView
-            android:id="@+id/already_have_account"
-            android:layout_width="343dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
-            android:text="Já possui conta ?"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="91dp"
-            tools:layout_editor_absoluteY="452dp" />
-
-        <Button
-            android:id="@+id/already_login_button"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:backgroundTint="#FFC107"
-            android:text="Realize o login aqui"
-            android:textColor="#020202"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="262dp"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:inputType="textPersonName"
+                android:text="Registro"
+                android:textAlignment="center"
+                android:textColor="#040403"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="178dp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:src="@drawable/registered" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="7dp"
+                android:text="Nome"
+                android:textAlignment="textStart"
+                android:textColor="#040303"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/input_name"
+                android:layout_width="276dp"
+                android:layout_height="61dp"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#050505"
+                tools:layout_editor_absoluteX="85dp"
+                tools:layout_editor_absoluteY="293dp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="306dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="7dp"
+                android:text="Username"
+                android:textAlignment="textStart"
+                android:textColor="#040303"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/input_username"
+                android:layout_width="275dp"
+                android:layout_height="59dp"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#050505"
+                tools:ignore="SpeakableTextPresentCheck"
+                tools:layout_editor_absoluteX="86dp"
+                tools:layout_editor_absoluteY="384dp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="308dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="7dp"
+                android:text="Email"
+                android:textAlignment="textStart"
+                android:textColor="#040303"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/input_email"
+                android:layout_width="276dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColor="#050505"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="7dp"
+                android:text="Senha"
+                android:textAlignment="textStart"
+                android:textColor="#040303"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/input_password"
+                android:layout_width="280dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#050505"
+                tools:ignore="SpeakableTextPresentCheck"
+                tools:layout_editor_absoluteX="86dp"
+                tools:layout_editor_absoluteY="384dp" />
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginRight="25dp"
+                android:background="#050505"
+                android:text="Cadastrar"
+                android:textColor="#FFC107"
+                tools:ignore="TextContrastCheck"
+                tools:layout_editor_absoluteX="127dp"
+                tools:layout_editor_absoluteY="509dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            android:layout_marginTop="80dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/already_have_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Já possui conta ?"
+                android:textAlignment="center"
+                android:textColor="#050505"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="452dp" />
+
+            <Button
+                android:id="@+id/already_login_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:backgroundTint="#FFC107"
+                android:text="Realize o login aqui"
+                android:textColor="#020202"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </LinearLayout>
 
