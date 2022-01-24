@@ -32,8 +32,16 @@ class MainActivity : AppCompatActivity() {
         rv.adapter = battleAdapter
 
         onClickHistory()
+        onClickSearchBattle()
     }
 
+    private fun onClickSearchBattle(){
+        val buttonNavigationSearchBattle: ImageView = findViewById(R.id.battleIcon)
+        buttonNavigationSearchBattle.setOnClickListener{
+            val activitySearchBattle= Intent(this, SearchActivity::class.java)
+            startActivity(activitySearchBattle)
+        }
+    }
 
     private fun onClickHistory(){
         val buttonNavigationHistory: ImageView = findViewById(R.id.historyIcon)
