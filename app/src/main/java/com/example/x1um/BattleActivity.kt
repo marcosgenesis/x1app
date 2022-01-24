@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
 import com.example.x1um.Model.Battle
 import com.example.x1um.Model.User
+import com.example.x1um.Model.Users
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -22,10 +24,14 @@ class BattleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_battle)
 
-        battles = ArrayList()
 
-        showBattlesOfUser()
-        printBattles()
+        val userAdapter = UserAdapter(ArrayList<User>(Users.fakeRankingUsers()))
+        val rv: RecyclerView = findViewById(R.id.rankingRecycler);
+        rv.adapter = userAdapter
+
+
+        //battles = ArrayList()
+        //showBattlesOfUser()
     }
 
     private fun showBattlesOfUser() {
@@ -114,10 +120,5 @@ class BattleActivity : AppCompatActivity() {
                     }
             }
          */
-    }
-
-    private fun printBattles() {
-        println("Entrei no meu método: ")
-        println(battles.size)
     }
 }

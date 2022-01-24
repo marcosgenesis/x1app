@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/card_view_bg"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="@layout/activity_search"
+    tools:showIn="@layout/activity_battle"
     android:layout_marginBottom="20dp"
     >
     <LinearLayout
@@ -48,39 +48,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 >
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/jogos"
-                        />
+                        android:src="@drawable/rank" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        xmlns:tools="http://schemas.android.com/tools"
-                        android:text="34 jogos"
                         android:layout_marginLeft="10dp"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:layout_marginLeft="20dp">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/goals"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        xmlns:tools="http://schemas.android.com/tools"
-                        android:text="232 pontos"
-                        android:layout_marginLeft="10dp"
-                        />
+                        android:text="1º lugar" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/jogos" />
+
+                    <TextView xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:text="34 jogos" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
