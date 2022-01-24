@@ -1,6 +1,8 @@
 package com.example.x1um.Model
 
-class User (Id: String, Name: String, Username: String, Email: String) {
+import java.io.Serializable
+
+class User (Id: String, Name: String, Username: String, Email: String):Serializable {
     var id = Id
     var name = Name
     var username = Username
