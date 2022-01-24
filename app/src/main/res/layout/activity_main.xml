@@ -133,7 +133,7 @@
                 android:id="@+id/battleIcon"
                 android:layout_width="match_parent"
                 android:layout_height="66dp"
-                app:srcCompat="@drawable/img" />
+                app:srcCompat="@drawable/logo" />
 
         </LinearLayout>
 
@@ -144,7 +144,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/historyIcon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/sword" />
