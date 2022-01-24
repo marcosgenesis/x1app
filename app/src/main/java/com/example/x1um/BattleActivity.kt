@@ -14,14 +14,18 @@ import com.google.firebase.ktx.Firebase
 class BattleActivity : AppCompatActivity() {
     var db = FirebaseFirestore.getInstance()
     lateinit var auth: FirebaseAuth
-    var battles: List<Battle> = ArrayList<Battle>()
+    lateinit var battles: ArrayList<Battle>
+    //var battles: ArrayList<Battle> = ArrayList<Battle>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_battle)
 
+        battles = ArrayList()
+
         showBattlesOfUser()
+        printBattles()
     }
 
     private fun showBattlesOfUser() {
@@ -45,10 +49,23 @@ class BattleActivity : AppCompatActivity() {
                     db.collection("battles").whereEqualTo("myName", document.data["name"]).get()
                         .addOnSuccessListener { documentReference ->
                             println("Deu certo!! ")
-                            println(documentReference.size())
                             for(document in documentReference) {
                                 println("Batalhas que sou usuário::: ")
                                 println(document.data)
+                                var battle = Battle();
+                                battle.setMyName(document.data["myName"] as String?)
+                                battle.setOponentName(document.data["oponentName"] as String?)
+                                battle.setGoalsPro(4)
+                                battle.setGoalsAgainst(1)
+                                battle.setFinished(true)
+                                battle.setWinner(document.data["winner"] as String?)
+                                println("Battle: ")
+                                println(battle.getMyName())
+                                battles.add(battle)
+                                println("Nome do ultimo")
+                                println(battles.get(battles.size - 1).getMyName())
+                                println("Size do battles: ")
+                                println(battles.size)
                             }
                         }
 
@@ -58,17 +75,26 @@ class BattleActivity : AppCompatActivity() {
                             for(document in documentReference) {
                                 println("Batalhas que sou oponente::: ")
                                 println(document.data)
+                                var battle = Battle();
+                                battle.setMyName(document.data["myName"] as String?)
+                                battle.setOponentName(document.data["oponentName"] as String?)
+                                battle.setGoalsPro(6)
+                                battle.setGoalsAgainst(2)
+                                battle.setFinished(true)
+                                battle.setWinner(document.data["winner"] as String?)
+                                println("Battle: ")
+                                println(battle.getMyName())
+                                battles.add(battle)
+                                println("Nome do ultimo")
+                                println(battles.get(battles.size - 1).getMyName())
+                                println("Size do battles: ")
+                                println(battles.size)
                             }
                         }
                 }
                 //println(user.name)
             }
-            .addOnFailureListener { exception ->
-                Log.w("Erro: ", "Error getting documents: ", exception)
-            }
 
-
-        println("Saí do DB")
         //println(user.email)
 
         /*
@@ -88,5 +114,10 @@ class BattleActivity : AppCompatActivity() {
                     }
             }
          */
+    }
+
+    private fun printBattles() {
+        println("Entrei no meu método: ")
+        println(battles.size)
     }
 }

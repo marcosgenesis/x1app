@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.x1um.Model.Battle
@@ -29,5 +30,24 @@ class MainActivity : AppCompatActivity() {
         val battleAdapter = BattleAdapter(ArrayList<Battle>(Battles.fakeBattles()))
         val rv:RecyclerView = findViewById(R.id.battlesRecycler);
         rv.adapter = battleAdapter
+
+        onClickHistory()
+        onClickSearchBattle()
+    }
+
+    private fun onClickSearchBattle(){
+        val buttonNavigationSearchBattle: ImageView = findViewById(R.id.battleIcon)
+        buttonNavigationSearchBattle.setOnClickListener{
+            val activitySearchBattle= Intent(this, SearchActivity::class.java)
+            startActivity(activitySearchBattle)
+        }
+    }
+
+    private fun onClickHistory(){
+        val buttonNavigationHistory: ImageView = findViewById(R.id.historyIcon)
+        buttonNavigationHistory.setOnClickListener{
+            val activityBattle= Intent(this, BattleActivity::class.java)
+            startActivity(activityBattle)
+        }
     }
 }
