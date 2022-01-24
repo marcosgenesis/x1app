@@ -15,7 +15,9 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.2210144927536232" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.33" />
         <entry key="app/src/main/res/layout/battle_item.xml" value="0.296195652173913" />
+        <entry key="app/src/main/res/layout/search_item.xml" value="0.1" />
       </map>
     </option>
   </component>
