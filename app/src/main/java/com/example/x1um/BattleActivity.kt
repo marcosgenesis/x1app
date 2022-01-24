@@ -13,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
-class BattleActivity : AppCompatActivity() {
+class BattleActivity : AppCompatActivity(),OnUserClickListener {
     var db = FirebaseFirestore.getInstance()
     lateinit var auth: FirebaseAuth
     lateinit var battles: ArrayList<Battle>
@@ -25,7 +25,7 @@ class BattleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_battle)
 
 
-        val userAdapter = UserAdapter(ArrayList<User>(Users.fakeRankingUsers()))
+        val userAdapter = UserAdapter(ArrayList<User>(Users.fakeRankingUsers()),this)
         val rv: RecyclerView = findViewById(R.id.rankingRecycler);
         rv.adapter = userAdapter
 
@@ -120,5 +120,9 @@ class BattleActivity : AppCompatActivity() {
                     }
             }
          */
+    }
+
+    override fun onItemClick(item: User, position: Int) {
+
     }
 }
