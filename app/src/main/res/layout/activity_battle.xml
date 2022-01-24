@@ -80,4 +80,5 @@
                 tools:listitem="@layout/ranking_item" />
         </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -141,16 +141,12 @@
 
             <EditText
                 android:id="@+id/input_password"
-                android:layout_width="280dp"
-                android:layout_height="48dp"
+                android:layout_width="275dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:textColor="#050505"
-                tools:ignore="SpeakableTextPresentCheck"
-                tools:layout_editor_absoluteX="86dp"
-                tools:layout_editor_absoluteY="384dp" />
+                android:inputType="textPassword"
+                android:textColor="#050505" />
 
             <Button
                 android:id="@+id/register_button"
