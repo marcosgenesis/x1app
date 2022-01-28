@@ -1,5 +1,6 @@
-package com.example.x1um.Model
+package com.example.x1um.Model.Mock
 
+import com.example.x1um.Model.Battle
 import java.util.*
 
 

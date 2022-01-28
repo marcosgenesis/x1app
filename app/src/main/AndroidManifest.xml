@@ -10,20 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.X1um">
         <activity
-            android:name=".DuelActivity"
+            android:name=".Activity.DuelActivity"
             android:exported="true" >
         </activity>
+
         <activity
-            android:name=".HomeActivity"
+            android:name=".Activity.CreateBattleActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateBattleActivity"
+            android:name=".Activity.BattleActivity"
             android:exported="false" />
         <activity
-            android:name=".BattleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,13 +30,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true"/>
         <activity
-            android:name=".SearchActivity"
+            android:name=".Activity.SearchActivity"
             android:exported="true" />
 
         <meta-data

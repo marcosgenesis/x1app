@@ -1,4 +1,4 @@
-package com.example.x1um
+package com.example.x1um.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.example.x1um.Model.User
+import com.example.x1um.R
 
 class DuelActivity : AppCompatActivity() {
     lateinit var txtGoals: TextView
