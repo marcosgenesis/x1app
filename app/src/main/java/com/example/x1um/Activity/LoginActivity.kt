@@ -1,24 +1,26 @@
-package com.example.x1um
+package com.example.x1um.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
+import com.example.x1um.R
+import com.example.x1um.Services.AuthFirebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
-    val db = Firebase.firestore
-    lateinit var auth: FirebaseAuth
+    lateinit var authService: AuthFirebase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        authService = AuthFirebase()
 
         onClickLoginButton()
         onClickRegisterLink()
@@ -31,14 +33,14 @@ class LoginActivity : AppCompatActivity() {
         val emailInput = editTextEmail.getText()
         val passwordInput = editTextPassword.getText()
 
-        println("Email: ")
-        println(emailInput)
-        println("Password: ")
-        println(passwordInput)
-
         val buttonRegister: Button = findViewById(R.id.button_login)
         buttonRegister.setOnClickListener{
-            loginUser(emailInput.toString(), passwordInput.toString())
+            authService.loginUser(emailInput.toString(), passwordInput.toString()) { resultSuccessful ->
+                if(resultSuccessful) {
+                    val activityMain = Intent(this, MainActivity::class.java)
+                    startActivity(activityMain)
+                }
+            }
         }
     }
 
@@ -50,23 +52,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun loginUser(email: String, password: String) {
-        println(email)
-        println(password)
-        auth = Firebase.auth
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    db.collection("users").whereEqualTo("email", user?.email).get().addOnSuccessListener { result ->
-                        val activityMain = Intent(this, MainActivity::class.java)
-                        startActivity(activityMain)
-                    }.addOnFailureListener { error ->
-                        Log.w("User login error", "Error ao obter usuário", error)
-                    }
-                } else {
-                    Log.w("Login error", "Erro ao realizar login",)
-                }
-            }
-    }
+
+
+
 }

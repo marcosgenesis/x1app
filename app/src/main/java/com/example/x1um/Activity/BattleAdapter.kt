@@ -1,4 +1,4 @@
-package com.example.x1um
+package com.example.x1um.Activity
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.x1um.Model.Battle
+import com.example.x1um.R
 
 class BattleAdapter(battlesList: List<Battle>):
     RecyclerView.Adapter<BattleAdapter.BattleViewHolder>() {

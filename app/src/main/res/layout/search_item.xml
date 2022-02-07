@@ -7,10 +7,13 @@
     tools:showIn="@layout/activity_search"
     android:layout_marginBottom="20dp"
     >
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:padding="10dp">
-        <TextView
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/searchItemInitialLetter"
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -18,67 +21,67 @@
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="12sp"
-            xmlns:tools="http://schemas.android.com/tools"
             tools:text="F" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:orientation="vertical"
-            android:layout_marginLeft="8dp">
-            <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical">
+
+            <TextView xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/searchItemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                xmlns:tools="http://schemas.android.com/tools"
-                tools:text="Lucas do nascimento"
+                android:textColor="@color/primary_text"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:textColor="@color/primary_text"
-                />
-            <TextView
+                tools:text="Lucas do nascimento" />
+
+            <TextView xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/searchItemUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                xmlns:tools="http://schemas.android.com/tools"
-                tools:text="\@luquinhas"
-                android:textSize="12dp"
                 android:textColor="@color/primary_text"
-                />
+                android:textSize="12dp"
+                tools:text="\@luquinhas" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                >
+                android:layout_marginTop="6dp">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/jogos"
-                        />
-                    <TextView
+                        android:src="@drawable/jogos" />
+
+                    <TextView xmlns:tools="http://schemas.android.com/tools"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        xmlns:tools="http://schemas.android.com/tools"
-                        android:text="34 jogos"
                         android:layout_marginLeft="10dp"
-                        />
+                        android:text="34 jogos" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:layout_marginLeft="20dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp">
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/goals"
-                        />
-                    <TextView
+                        android:src="@drawable/goals" />
+
+                    <TextView xmlns:tools="http://schemas.android.com/tools"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        xmlns:tools="http://schemas.android.com/tools"
-                        android:text="232 pontos"
                         android:layout_marginLeft="10dp"
-                        />
+                        android:text="232 pontos" />
                 </LinearLayout>
 
             </LinearLayout>

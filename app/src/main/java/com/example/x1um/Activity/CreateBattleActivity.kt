@@ -1,10 +1,8 @@
-package com.example.x1um
+package com.example.x1um.Activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.example.x1um.Model.Battle
+import com.example.x1um.R
 import com.google.firebase.firestore.FirebaseFirestore
 
 class CreateBattleActivity : AppCompatActivity() {
