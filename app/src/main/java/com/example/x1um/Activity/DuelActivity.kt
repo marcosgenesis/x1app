@@ -7,10 +7,17 @@ import android.view.View
 import android.widget.TextView
 import com.example.x1um.Model.User
 import com.example.x1um.R
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
-class DuelActivity : AppCompatActivity() {
+class DuelActivity : AppCompatActivity(),OnMapReadyCallback {
     lateinit var txtGoals: TextView
     lateinit var txtAgainstGoals: TextView
+    private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +38,25 @@ class DuelActivity : AppCompatActivity() {
         txtGoals.setText(0.toString())
         txtMyInitialLetter.setText("MG")
         txtMyName.setText("Marcos Gênesis")
+
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.duelmap) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        mMap.setOnMapClickListener { result ->
+            val lat = result.latitude
+            val long = result.longitude
+
+            mMap.addMarker(
+                MarkerOptions()
+                    .position(LatLng(lat, long))
+                    .title("Location"))
+        }
 
     }
 

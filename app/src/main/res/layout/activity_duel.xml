@@ -179,6 +179,15 @@
 
                 </LinearLayout>
             </LinearLayout>
+            <fragment
+                android:id="@+id/duelmap"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="186dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp">
+            </fragment>
             <View android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
