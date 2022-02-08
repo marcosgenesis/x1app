@@ -12,7 +12,7 @@ class BattleService {
     var points: Int = 0
     lateinit var userGlobal: User
 
-        fun listBattles(resultSuccessful: (battles: ArrayList<Battle>, points: Int, games: Int, user:User) -> Unit) {
+    fun listBattles(resultSuccessful: (battles: ArrayList<Battle>, points: Int, games: Int, user:User) -> Unit) {
         userService = UserService()
 
        userService.getUser() {
@@ -43,5 +43,9 @@ class BattleService {
 
                }
         }
+    }
+
+    fun createBattle(battle:Battle){
+        db.collection("battles").add(battle)
     }
 }

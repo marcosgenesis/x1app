@@ -30,6 +30,4 @@ class UserService {
                 resultSuccessful(user)
             }
     }
-
-    fun get
 }
