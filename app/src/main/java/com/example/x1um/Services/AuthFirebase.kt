@@ -34,7 +34,7 @@ class AuthFirebase {
         auth.createUserWithEmailAndPassword(email, password).
         addOnCompleteListener { task: Task<AuthResult> ->
             if(task.isSuccessful){
-                val user = User(auth.currentUser?.uid.toString(), name, username, email)
+                val user = User(auth.currentUser?.uid.toString(), name, username, email, 0, 0)
 
                 db.collection("users")
                     .add(user)
