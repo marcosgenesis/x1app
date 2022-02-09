@@ -10,7 +10,10 @@ class BattleService {
     lateinit var userService: UserService
     var countOfVictorys: Int = 0
     var points: Int = 0
+    var countOfVictorysOponent: Int = 0
+    var pointsOponent: Int = 0
     lateinit var userGlobal: User
+    lateinit var userOponent: User
 
     fun listBattles(resultSuccessful: (battles: ArrayList<Battle>, points: Int, games: Int, user:User) -> Unit) {
         userService = UserService()
@@ -20,8 +23,11 @@ class BattleService {
                 userGlobal = user
 
            val battlesList: ArrayList<Battle> = ArrayList()
+
            db.collection("battles").whereEqualTo("myName", userGlobal.name).get()
                .addOnSuccessListener { documentReference ->
+                   var userOponent = User("", "", "", "", 0 , 0, 0)
+
                    for(document in documentReference) {
                        var battle = Battle();
                        battle.setMyName(document.data["myName"] as String?)
@@ -33,14 +39,28 @@ class BattleService {
                        if(document.data["winner"] == document.data["myName"]) {
                            countOfVictorys += 1
                            points = countOfVictorys * 3
+                       }else if(document.data["winner"] == document.data["oponentName"]) {
+                           countOfVictorysOponent += 1
+                           pointsOponent = countOfVictorys * 3
                        }
-                       battlesList.add(battle)
-                       userGlobal.games = battlesList.size
-                       userGlobal.points = points
+
+                       userService.getUserByName(document.data["oponentName"] as String) {
+                           userReturn ->
+                           userOponent = userReturn
+                           userOponent.points = pointsOponent
+                           userOponent.name = document.data["oponentName"] as String
+                           userOponent.username = userReturn.username
+
+                           if(battle.isFinished()) {
+                               battlesList.add(battle)
+                           }
+
+                           userOponent.games = battlesList.size
+                           userGlobal.points = points
+
+                           resultSuccessful(battlesList, points, battlesList.size, userOponent)
+                       }
                    }
-
-                   resultSuccessful(battlesList, points, battlesList.size, userGlobal)
-
                }
         }
     }

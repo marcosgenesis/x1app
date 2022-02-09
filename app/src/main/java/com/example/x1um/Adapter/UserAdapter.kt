@@ -31,11 +31,25 @@ class UserAdapter(usersList: List<User>, var clickListener: OnUserClickListener)
             private val txtUsername = itemView.findViewById<TextView>(R.id.searchItemUsername)
             private val txtName = itemView.findViewById<TextView>(R.id.searchItemName)
             private val txtInitialLetterSearchItem = itemView.findViewById<TextView>(R.id.searchItemInitialLetter)
+            private val games = itemView.findViewById<TextView>(R.id.games)
+            private val points = itemView.findViewById<TextView>(R.id.points)
+
 
             fun bind(user: User,action:OnUserClickListener) {
                 txtName.text = user.name;
                 txtUsername.text = user.username;
-                txtInitialLetterSearchItem.text = user.name.substring(0,1);
+                //var lastname = user.name.split(" ")[1]
+                //txtInitialLetterSearchItem.text = user.name.substring(0,1) + lastname.substring(0, 1).uppercase();
+                if(user.games == 1) {
+                    games.text = user.games.toString() + " jogo"
+                } else {
+                    games.text = user.games.toString() + " jogos"
+                }
+                if(user.points == 1) {
+                    points.text = user.points.toString() + " ponto"
+                } else {
+                    points.text = user.points.toString() + " pontos"
+                }
 
                 itemView.setOnClickListener{
                     action.onItemClick(user,adapterPosition)
