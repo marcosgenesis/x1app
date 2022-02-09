@@ -45,7 +45,41 @@ class BattleService {
         }
     }
 
-    fun createBattle(battle:Battle){
-        db.collection("battles").add(battle)
+    fun createBattle(battle:Battle,resultSuccessful: (battleId:String) -> Unit) {
+        db.collection("battles").add(battle).addOnSuccessListener {
+            battle ->
+            var battleId = battle.id
+            resultSuccessful(battleId)
+        }
+    }
+
+    fun IscoreGoal(battle: Battle,battleId:String,resultSuccessful: (goalsPro:Int) -> Unit){
+        db.collection("battles").document(battleId).update("goalsPro", battle.getGoalsPro() + 1).addOnSuccessListener {
+                docu ->
+            resultSuccessful(battle.getGoalsPro() + 1)
+        }
+    }
+
+    fun oponentScoreGoal(battle: Battle,battleId:String,resultSuccessful: (goalsAgainst:Int) -> Unit){
+        db.collection("battles").document(battleId).update("goalsAgainst", battle.getGoalsAgainst() + 1).addOnSuccessListener {
+                docu ->
+            resultSuccessful(battle.getGoalsAgainst() + 1)
+        }
+    }
+
+    fun doneDuel(battle: Battle,battleId:String,resultSuccessful: (result:Boolean) -> Unit){
+        var winner = if (battle.getGoalsPro() > battle.getGoalsAgainst())  battle.getMyName() else battle.getOponentName()
+        if (battle.getGoalsPro() == battle.getGoalsAgainst()) {
+            db.collection("battles").document(battleId).update("finished", true).addOnSuccessListener {
+                    docu ->
+                resultSuccessful(true)
+            }
+        }else{
+            db.collection("battles").document(battleId).update("finished", true, "winner", winner ).addOnSuccessListener {
+                    docu ->
+                resultSuccessful(true)
+            }
+        }
+
     }
 }

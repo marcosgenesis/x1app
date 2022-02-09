@@ -1,22 +1,32 @@
 package com.example.x1um.Activity
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import com.example.x1um.Model.Battle
 import com.example.x1um.Model.User
 import com.example.x1um.R
 import com.example.x1um.Services.BattleService
 import com.example.x1um.Services.UserService
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class DuelActivity : AppCompatActivity(),OnMapReadyCallback {
     lateinit var txtGoals: TextView
@@ -25,6 +35,11 @@ class DuelActivity : AppCompatActivity(),OnMapReadyCallback {
     lateinit var battleService: BattleService
     lateinit var userIntent: User
     private lateinit var mMap: GoogleMap
+    private lateinit var client: FusedLocationProviderClient
+    private lateinit var battleIdGlobal: String;
+    private var longitude:Double = 0.0;
+    private var latitude:Double = 0.0;
+    private var battle = Battle();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +48,18 @@ class DuelActivity : AppCompatActivity(),OnMapReadyCallback {
         battleService = BattleService()
 
         val oponent:User = intent.getSerializableExtra("user") as User;
-
+        userService.getUser {
+                user ->
+            userIntent = user
+            battle.setMyName(user.username)
+            battle.setOponentName(oponent.username)
+            battle.setGoalsPro(0)
+            battle.setGoalsAgainst(0)
+            battleService.createBattle(battle){
+                    battleId ->
+                battleIdGlobal = battleId
+            }
+        }
         txtGoals = findViewById(R.id.proGoals)
         txtAgainstGoals = findViewById(R.id.againstGoals)
         val txtOponentName = findViewById<TextView>(R.id.oponentDuelName)
@@ -44,10 +70,11 @@ class DuelActivity : AppCompatActivity(),OnMapReadyCallback {
         txtAgainstGoals.setText(0.toString())
         txtGoals.setText(0.toString())
 
-
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.duelmap) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        this.client = LocationServices.getFusedLocationProviderClient(this)
 
         onClickHome()
         onClickHistory()
@@ -56,29 +83,73 @@ class DuelActivity : AppCompatActivity(),OnMapReadyCallback {
 
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
+    override fun onResume() {
+        super.onResume()
 
-        mMap.setOnMapClickListener { result ->
-            val lat = result.latitude
-            val long = result.longitude
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+        ) {
+            Toast.makeText(this,"deu muito erro",Toast.LENGTH_SHORT)
+            return
+        }
 
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(lat, long))
-                    .title("Location"))
+        println("AQUI BANDO DE ARROMBADO3")
+        this.client.lastLocation.addOnSuccessListener { location ->
+
+            println("AQUI BANDO DE ARROMBADO2" + location.latitude)
+            if (location !== null) {
+                println("AQUI BANDO DE ARROMBADO")
+                println(location.latitude)
+                println(location.longitude)
+                longitude = location.longitude
+                latitude = location.latitude
+
+                Toast.makeText(this," " + longitude + " " + latitude,Toast.LENGTH_SHORT)
+            }
+        }.addOnFailureListener { error ->
+            Toast.makeText(this,"Erro com a localização!",Toast.LENGTH_SHORT)
         }
     }
 
-    fun scoreGoal(view:View, user: User){
-        var goal = txtGoals.text.toString();
-        txtGoals.setText((goal.toInt() + 1).toString())
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
 
+        // Add a marker in Sydney and move the camera
+        val sydney = LatLng(latitude, longitude)
+        mMap.addMarker(MarkerOptions()
+            .position(sydney)
+            .title("Marker in Sydney"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 
-    fun scoreOponentGoal(view:View, user: User){
+    fun scoreGoal(view:View){
+        var goal = txtGoals.text.toString();
+        txtGoals.setText((goal.toInt() + 1).toString())
+        battleService.IscoreGoal(battle,battleIdGlobal){
+            goalsPro ->
+            battle.setGoalsPro(goalsPro)
+        }
+    }
+
+    fun scoreOponentGoal(view:View){
         var goal = txtAgainstGoals.text.toString();
         txtAgainstGoals.setText((goal.toInt() + 1).toString())
+        battleService.oponentScoreGoal(battle,battleIdGlobal){
+                goalsAgainst ->
+            battle.setGoalsAgainst(goalsAgainst)
+        }
+    }
+
+    fun doneDuel(view:View){
+        battleService.doneDuel(battle,battleIdGlobal){
+            result ->
+            Toast.makeText(this, "Duelo Encerrado com sucesso",Toast.LENGTH_SHORT).show()
+            val intentHome = Intent(this,MainActivity::class.java)
+            startActivity(intentHome)
+        }
+
     }
 
     private fun getNameUser() {
@@ -90,7 +161,6 @@ class DuelActivity : AppCompatActivity(),OnMapReadyCallback {
             txtMyName.text = userIntent.name
             txtMyInitialLetter.text = userIntent.name.substring(0,2).toString().uppercase()
         }
-
     }
 
     private fun onClickHome(){

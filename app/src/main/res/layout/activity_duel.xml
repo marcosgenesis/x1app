@@ -22,45 +22,48 @@
                 android:layout_margin="10dp"
                 android:gravity="center"
                 >
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="140dp"
                     android:layout_height="180dp"
+                    android:layout_margin="10dp"
                     android:clickable="true"
                     android:foreground="?android:selectableItemBackground"
-                    app:cardCornerRadius="20dp"
-                    android:layout_margin="10dp"
-                    android:onClick="scoreOponentGoal"
-                    >
+                    android:onClick="scoreGoal"
+                    app:cardCornerRadius="20dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:gravity="center"
-                        >
-                        <TextView
+                        android:orientation="vertical">
+
+                        <TextView xmlns:tools="http://schemas.android.com/tools"
                             android:id="@+id/MyInitialLetters"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
+                            android:layout_marginTop="20dp"
                             android:background="@drawable/profile_box"
                             android:gravity="center"
                             android:textColor="@android:color/white"
                             android:textSize="12sp"
-                            xmlns:tools="http://schemas.android.com/tools"
-                            tools:text="LN"
-                            android:layout_marginTop="20dp"/>
-                        <View android:layout_width="wrap_content"
+                            tools:text="LN" />
+
+                        <View
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
-                        <TextView
+
+                        <TextView xmlns:tools="http://schemas.android.com/tools"
                             android:id="@+id/myNameInDuel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            xmlns:tools="http://schemas.android.com/tools"
-                            tools:text="Lucas do nascimento"
                             android:textAlignment="center"
                             android:textSize="16dp"
-                            />
-                        <View android:layout_width="wrap_content"
+                            tools:text="Lucas do nascimento" />
+
+                        <View
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1" />
                     </LinearLayout>
@@ -225,6 +228,7 @@
                 android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:text="Finalizar Duelo"
+                android:onClick="doneDuel"
                 >
 
             </Button>

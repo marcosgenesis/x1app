@@ -8,11 +8,11 @@ object Users {
     fun fakeUsers(): List<User> {
         return Arrays.asList(
             User.UserBuilder.builder().setId("123").setName("Marcos Nascimento").setEmail("marquin@nascimento.com").setUsername("marquin").build(),
-            User.UserBuilder.builder().setId("1234").setName("Marcos Nogueira").setEmail("marquin@nascimento.com").setUsername("marquin2").build(),
-            User.UserBuilder.builder().setId("1235").setName("Marcos Mito").setEmail("marquin@nascimento.com").setUsername("marquin3").build(),
-            User.UserBuilder.builder().setId("1236").setName("Marcos Pedra branca").setEmail("marquin@nascimento.com").setUsername("marquin4").build(),
-            User.UserBuilder.builder().setId("1237").setName("Marquinhos de morada nova").setEmail("marquin@nascimento.com").setUsername("marquin5").build(),
-            User.UserBuilder.builder().setId("1238").setName("Marquin rei delas").setEmail("marquin@nascimento.com").setUsername("marquin6").build(),
+            User.UserBuilder.builder().setId("1234").setName("Marcos Nogueira").setEmail("marquin@nascimento.com").setUsername("italo").build(),
+            User.UserBuilder.builder().setId("1235").setName("Marcos Mito").setEmail("marquin@nascimento.com").setUsername("nascimento").build(),
+            User.UserBuilder.builder().setId("1236").setName("Marcos Pedra branca").setEmail("marquin@nascimento.com").setUsername("gusta").build(),
+            User.UserBuilder.builder().setId("1237").setName("Marquinhos de morada nova").setEmail("marquin@nascimento.com").setUsername("jefo").build(),
+            User.UserBuilder.builder().setId("1238").setName("Marquin rei delas").setEmail("marquin@nascimento.com").setUsername("ericALenda").build(),
 
             )
     }
