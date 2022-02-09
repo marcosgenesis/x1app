@@ -95,14 +95,8 @@ class DuelActivity : AppCompatActivity(),OnMapReadyCallback {
             return
         }
 
-        println("AQUI BANDO DE ARROMBADO3")
         this.client.lastLocation.addOnSuccessListener { location ->
-
-            println("AQUI BANDO DE ARROMBADO2" + location.latitude)
             if (location !== null) {
-                println("AQUI BANDO DE ARROMBADO")
-                println(location.latitude)
-                println(location.longitude)
                 longitude = location.longitude
                 latitude = location.latitude
 
@@ -115,13 +109,11 @@ class DuelActivity : AppCompatActivity(),OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(latitude, longitude)
+        val location = LatLng(latitude, longitude)
         mMap.addMarker(MarkerOptions()
-            .position(sydney)
-            .title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+            .position(location)
+            .title("Estou aqui!"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
     }
 
     fun scoreGoal(view:View){
