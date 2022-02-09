@@ -60,11 +60,12 @@
                         android:layout_height="20dp"
                         android:src="@drawable/jogos" />
 
-                    <TextView xmlns:tools="http://schemas.android.com/tools"
+                    <TextView
+                        android:id="@+id/games"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
-                        android:text="34 jogos" />
+                        android:text="jogos" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -77,11 +78,12 @@
                         android:layout_height="20dp"
                         android:src="@drawable/goals" />
 
-                    <TextView xmlns:tools="http://schemas.android.com/tools"
+                    <TextView
+                        android:id="@+id/points"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
-                        android:text="232 pontos" />
+                        android:text="pontos" />
                 </LinearLayout>
 
             </LinearLayout>

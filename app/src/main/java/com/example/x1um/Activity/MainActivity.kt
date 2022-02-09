@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         battleService = BattleService()
         userService = UserService()
-        userIntent = User("", "", "", "", 0, 0)
+        userIntent = User("", "", "", "", 0, 0, 0)
 
         showDuels()
 

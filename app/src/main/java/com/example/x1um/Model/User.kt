@@ -2,13 +2,14 @@ package com.example.x1um.Model
 
 import java.io.Serializable
 
-class User (Id: String, Name: String, Username: String, Email: String, Points: Int, Games: Int):Serializable {
+class User (Id: String, Name: String, Username: String, Email: String, Points: Int, Games: Int, Position: Int):Serializable {
     var id = Id
     var name = Name
     var username = Username
     var email = Email
     var points = Points
     var games = Games
+    var position = Position
 
     class UserBuilder private constructor(){
         private var id = ""
@@ -17,6 +18,7 @@ class User (Id: String, Name: String, Username: String, Email: String, Points: I
         private var email = ""
         private var points = 0
         private var games = 0
+        private var position = 0
 
         fun setId(id: String): User.UserBuilder {
             this.id = id
@@ -48,8 +50,13 @@ class User (Id: String, Name: String, Username: String, Email: String, Points: I
             return this
         }
 
+        fun setPosition(position: Int): User.UserBuilder {
+            this.position = position
+            return this
+        }
+
         fun build():User{
-            val user = User(id,name,username,email, points, games)
+            val user = User(id,name,username,email, points, games, position)
             return user
         }
 
