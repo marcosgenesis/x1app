@@ -59,18 +59,6 @@ class SearchActivity : AppCompatActivity(), OnUserClickListener {
     private fun onSearch() {
         val personName: EditText = findViewById(R.id.editTextTextPersonName)
 
-        println("Person Name aquiii: ")
-        println(personName.text.toString())
-
-//        personName.setOnEditorActionListener { v, actionId, event ->
-//            var handled = false
-//            if (actionId == EditorInfo.IME_ACTION_DONE) {
-//                println(personName.text.toString())
-//                handled = true
-//            }
-//            handled
-//        }
-
     }
 
     private fun onClickSearchBattle(){

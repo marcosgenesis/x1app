@@ -116,9 +116,6 @@ class BattleActivity : AppCompatActivity(), OnUserClickListener {
                 battles, points, games, user ->
             battlesList = battles
 
-            println("tamanho: ")
-            println(battlesList.size)
-
             for (battle in battlesList) {
                 var userReturn = User("", "", "", "", 0, 0, 0)
                 userReturn.points = user.points
