@@ -2,11 +2,13 @@ package com.example.x1um.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.x1um.Model.Battle
-import com.example.x1um.Model.Mock.Users
 import com.example.x1um.Model.User
 import com.example.x1um.OnUserClickListener
 import com.example.x1um.R
@@ -27,24 +29,24 @@ class SearchActivity : AppCompatActivity(), OnUserClickListener {
     lateinit var userService: UserService
     lateinit var battleService: BattleService
     lateinit  var battlesList: ArrayList<Battle>
+    lateinit var userList: ArrayList<User>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        userService = UserService()
         battleService = BattleService()
+        userService = UserService()
+
+        userList = ArrayList()
 
         onClickSearchBattle()
         onClickHistory()
         onClickHome()
 
         showRanking()
-
-        val userAdapter = UserAdapter(ArrayList<User>(Users.fakeUsers()),this)
-        val rv: RecyclerView = findViewById(R.id.searchRecycler);
-        rv.adapter = userAdapter
+        onSearch()
     }
 
     override fun onItemClick(item: User, position: Int) {
@@ -52,6 +54,23 @@ class SearchActivity : AppCompatActivity(), OnUserClickListener {
             putExtra("user", item)
         }
         startActivity(intent)
+    }
+
+    private fun onSearch() {
+        val personName: EditText = findViewById(R.id.editTextTextPersonName)
+
+        println("Person Name aquiii: ")
+        println(personName.text.toString())
+
+//        personName.setOnEditorActionListener { v, actionId, event ->
+//            var handled = false
+//            if (actionId == EditorInfo.IME_ACTION_DONE) {
+//                println(personName.text.toString())
+//                handled = true
+//            }
+//            handled
+//        }
+
     }
 
     private fun onClickSearchBattle(){
@@ -80,8 +99,23 @@ class SearchActivity : AppCompatActivity(), OnUserClickListener {
 
     private fun showRanking() {
         battleService.listBattles() {
-            battles, points, games, userGlobal ->
+            battles, points, games, user ->
             battlesList = battles
+
+            for (battle in battlesList) {
+                var userReturn = User("", "", "", "", 0, 0,  0)
+                userReturn.points = user.points
+                userReturn.username = user.username
+                userReturn.games = battlesList.size
+                userReturn.name = battle.getOponentName().toString()
+                println("username: ")
+                println(userReturn.username)
+                userList.add(userReturn)
+            }
+
+            val userAdapter = UserAdapter(userList,this)
+            val rv: RecyclerView = findViewById(R.id.searchRecycler);
+            rv.adapter = userAdapter
         }
     }
 }

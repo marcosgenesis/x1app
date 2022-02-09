@@ -1,19 +1,22 @@
 package com.example.x1um.Activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.x1um.Model.Battle
-import com.example.x1um.Model.User
 import com.example.x1um.Model.Mock.Users
+import com.example.x1um.Model.User
 import com.example.x1um.OnUserClickListener
 import com.example.x1um.R
 import com.example.x1um.Services.BattleService
 import com.example.x1um.UserAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.properties.Delegates
 
 class BattleActivity : AppCompatActivity(), OnUserClickListener {
     var db = FirebaseFirestore.getInstance()
@@ -22,6 +25,10 @@ class BattleActivity : AppCompatActivity(), OnUserClickListener {
     lateinit  var battlesList: ArrayList<Battle>
     var gamesUser: Int = 0
     var pointsUser: Int = 0
+    lateinit var userList: ArrayList<User>
+    lateinit var champions: ArrayList<String>
+    var champion by Delegates.notNull<Int>()
+    lateinit var nameOfChampion: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +36,11 @@ class BattleActivity : AppCompatActivity(), OnUserClickListener {
         setContentView(R.layout.activity_battle)
 
         battleService = BattleService()
+        userList = ArrayList()
+        champions = ArrayList()
+
+        champion = 0
+        nameOfChampion = ""
 
         val userAdapter = UserAdapter(ArrayList<User>(Users.fakeRankingUsers()),this)
         val rv: RecyclerView = findViewById(R.id.rankingRecycler);
@@ -70,8 +82,59 @@ class BattleActivity : AppCompatActivity(), OnUserClickListener {
 
     private fun showRankingUsers() {
         battleService.listBattles() {
-                battles, points, games, userGlobal ->
+                battles, points, games, user ->
             battlesList = battles
+
+            for (battle in battlesList) {
+                var userReturn = User("", "", "", "", 0, 0,  0)
+                userReturn.points = user.points
+                userReturn.username = user.username
+                userReturn.games = battlesList.size
+                userReturn.name = battle.getOponentName().toString()
+
+                userList.add(userReturn)
+            }
+
+//            userList.sortBy {
+//                it.points
+//            }
+
+            for (user in userList) {
+               println(user.points)
+            }
+
+
+
+            val userAdapter = UserAdapter(userList,this)
+            val rv: RecyclerView = findViewById(R.id.rankingRecycler);
+            rv.adapter = userAdapter
+        }
+    }
+
+    private fun showRanking() {
+        battleService.listBattles() {
+                battles, points, games, user ->
+            battlesList = battles
+
+            println("tamanho: ")
+            println(battlesList.size)
+
+            for (battle in battlesList) {
+                var userReturn = User("", "", "", "", 0, 0, 0)
+                userReturn.points = user.points
+                userReturn.username = user.username
+                userReturn.games = battlesList.size
+                userReturn.name = battle.getOponentName().toString()
+                println("username: ")
+                println(user.username)
+                userList.add(userReturn)
+
+                println(userList)
+            }
+
+            val userAdapter = UserAdapter(userList,this)
+            val rv: RecyclerView = findViewById(R.id.rankingRecycler);
+            rv.adapter = userAdapter
         }
     }
 
